@@ -25,12 +25,12 @@ router.get('/:id', async (req, res) => {
 
     const categoryDataID = await Category.findByPk(req.params.id, { include: [{ model: Product }] });
     if (!categoryDataID) {
-      res.status(404).json({ message: 'Category with the given ID doesnt exist!' });
+      res.json({ message: 'Category ID does not exist!' });
     } else {
-      res.status(200).json(categoryDataID);
+      res.json(categoryDataID);
     }
   } catch (err) {
-    res.status(500).json(err);
+    res.json(err);
   }
 });
 
